@@ -1,6 +1,8 @@
 import numpy as np
 from decimal import Decimal
 
+#update bisection
+
 # bisection
 # prerequisites:
 #   f(x) E C[a,b]
