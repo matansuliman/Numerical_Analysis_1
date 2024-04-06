@@ -16,8 +16,14 @@ def aitkens_method(f, p0, Nmax, TOL):
     n = 0
     p_prev = p0  # Store the previous value of p
     p_prev_prev = p0  # Store the value before the previous value of p
+
     p_hat_prev = -1
     p_hat = -1
+
+    numerator = lambda p0, p1: np.power(p1 - p0, 2)
+    denominator = lambda p0, p1, p2: (p2 - 2*p1 + p0)
+    hat = lambda p0, p1, p2: p0 - (numerator(p0, p1) / denominator(p0, p1, p2))
+
     while n <= Nmax:
         p = f(p0)
         if n >= 2:
@@ -38,7 +44,3 @@ def aitkens_method(f, p0, Nmax, TOL):
         p_hat_prev = p_hat
     print(f'Method failed after {Nmax} iterations, found: {p0}')
     return Nmax
-
-numerator = lambda p0, p1: np.power(p1 - p0, 2)
-denominator = lambda p0, p1, p2: (p2 - 2*p1 + p0)
-hat = lambda p0, p1, p2: p0 - (numerator(p0, p1) / denominator(p0, p1, p2))
