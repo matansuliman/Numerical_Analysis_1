@@ -1,5 +1,4 @@
 import numpy as np
-from decimal import Decimal
 
 # bisection method
 # prerequisites:
@@ -15,14 +14,14 @@ def bisect(f, a, b, Nmax, TOL):
     n = 0
     while n <= Nmax:
         c = (a+b)/2.0
-        print(f' {n:2d}    {a:3.10f}  {c:3.10f}  {b:3.10f}  {f(c):3.10f}')
+        print(f' {n:2d}    {a:3.15f}  {c:3.15f}  {b:3.15f}  {f(c):3.15f}')
         if f(c) == 0 or (b-a)/2 < TOL: 
-            print(f'Methound succeded after {n} iterations, found: {Decimal(c)}')
+            print(f'Methound succeded after {n} iterations, found: {c}')
             return
         else: n += 1
         if np.sign(f(a)) == np.sign(f(c)): a = c
         else: b = c
-    print(f'Methound failed after {Nmax} iterations, found: {Decimal(c)}')
+    print(f'Methound failed after {Nmax} iterations, found: {c}')
 
 
 f1 = lambda x: np.exp(x) - 1

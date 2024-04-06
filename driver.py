@@ -4,7 +4,7 @@ import aitkens as atk
 import steffensens as stf
 
 
-g1 = lambda x: np.cos(np.power(x,2)) - 1
+g1 = lambda x: np.cos(pow(x,2)) - 1
 g2 = lambda x: x/2 + 2
 
 Nmax = 20
@@ -26,4 +26,7 @@ stf_g2 = stf.steffensens_method(g2, p0=p0_g2, Nmax=Nmax, TOL=TOL)
 print( '      fp    atk    stf')
 print(f'g1:  {fp_g1:3d}    {atk_g1:3d}   {stf_g1:3d}')
 print(f'g2:  {fp_g2:3d}    {atk_g2:3d}   {stf_g2:3d}')
+
+
+
 

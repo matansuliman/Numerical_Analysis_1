@@ -1,5 +1,4 @@
 import numpy as np
-from decimal import Decimal
 
 # newton method
 # prerequisites:
@@ -15,13 +14,13 @@ def newtons_method(f, df, p0, Nmax, TOL):
     n = 0
     while n <= Nmax:
         p = p0 - (f(p0)/ df(p0))
-        print(f' {n:2d}    {p0:3.10f}    {f(p0):3.10f}')
+        print(f' {n:2d}    {p:3.15f}    {f(p):3.15f}')
         if np.abs(p - p0) < TOL: 
-            print(f'Methound succeded after {n} iterations, found: {Decimal(p0)}')
+            print(f'Methound succeded after {n} iterations, found: {p}')
             return
         n += 1
         p0 = p #update p
-    print(f'Methound failed after {Nmax} iterations, found: {Decimal(p0)}')
+    print(f'Methound failed after {Nmax} iterations, found: {p}')
 
 f1 = lambda x: np.cos(x) - x
 d_f1 = lambda x: - np.sin(x) - 1

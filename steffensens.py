@@ -1,5 +1,4 @@
 import numpy as np
-from decimal import Decimal
 
 # fixed point method
 # p is a fixed point of g if g(p)=p
@@ -13,7 +12,7 @@ from decimal import Decimal
 # @param Nmax is the maximum iterations for finding the root
 # @param TOL is the tolerance to find the root
 def steffensens_method(f, p0, Nmax, TOL):
-    print('index        Pn             f(Pn)')
+    #print('index        Pn             f(Pn)')
     n = 0
     while n <= Nmax:
         p1 = f(p0)
@@ -21,14 +20,16 @@ def steffensens_method(f, p0, Nmax, TOL):
         numerator = np.power(p1 - p0, 2)
         denominator = (p2 - 2*p1 + p0)
         if denominator == 0:
-            print(f'Methound divded by 0 after {n} iterations, found: {p0}')
-            return n
-        p = p0 - (numerator / denominator)
-        print(f' {n:2d}     {p0:3.10f}   {f(p0):3.10f}')
+            p = p2
+            print(f'Method alomst divded by 0 after {n} iterations')
+            #return n
+        else: p = p0 - (numerator / denominator)
+        print(f' {n:2d}     {p:3.15f}   {f(p):3.15f}')
         if np.abs(p - p0) < TOL: 
-            print(f'Methound succeded after {n} iterations, found: {p0}')
+            print(f'Method succeded after {n} iterations, found: {p}')
             return n
+        
         n += 1
         p0 = p #update Pn
-    print(f'Methound failed after {Nmax} iterations, found: {p0}')
+    print(f'Method failed after {Nmax} iterations, found: {p}')
     return Nmax

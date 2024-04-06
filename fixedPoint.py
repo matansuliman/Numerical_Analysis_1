@@ -12,15 +12,16 @@ import numpy as np
 # @param Nmax is the maximum iterations for finding the root
 # @param TOL is the tolerance to find the root
 def fixedPoint(f, p0, Nmax, TOL):
-    print('index        Pn             f(Pn)')
+    #print('index        Pn             f(Pn)')
     n = 0
     while n <= Nmax:
         p = f(p0)
-        print(f' {n:2d}     {p0:3.10f}     {p:3.10f}')
+        print(f' {n:2d}     {p0:3.15f}     {p:3.15f}')
         if np.abs(p - p0) < TOL: 
-            print(f'Methound succeded after {n} iterations, found: {p0}')
+            print(f'Method succeded after {n} iterations, found: {p}')
             return n
+        
         n += 1
         p0 = p #update Pn
-    print(f'Methound failed after {Nmax} iterations, found: {p0}')
+    print(f'Method failed after {Nmax} iterations, found: {p}')
     return Nmax

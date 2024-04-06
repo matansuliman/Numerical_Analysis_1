@@ -1,5 +1,4 @@
 import numpy as np
-from decimal import Decimal
 
 # false position method
 # @param f is the function to find fixed point meaning f(x)=x
@@ -15,16 +14,17 @@ def false_position(f, p0, p1, Nmax, TOL):
     print(f' {1:2d}    {p1:3.10f}    {f(q1):3.10f}')
     while n <= Nmax:
         p = p1 - q1*((p1-p0)/(q1-q0))
-        print(f' {n:2d}    {p:3.10f}    {f(p):3.10f}')
+
         if np.abs(p - p1) < TOL: 
-            print(f'Methound succeded after {n} iterations, found: {Decimal(p0)}')
+            print(f'Methound succeded after {n} iterations, found: {p}')
             return
+        print(f' {n:2d}    {p:3.10f}    {f(p):3.10f}')
         n += 1
         p0 = p1
         q0 = q1
         p1 = p
         q1 = f(p)
-    print(f'Methound failed after {Nmax} iterations, found: {Decimal(p0)}')
+    print(f'Methound failed after {Nmax} iterations, found: {p}')
 
 f1 = lambda x: np.cos(x) - x
 # find root of f(x) = cos(x) - x
