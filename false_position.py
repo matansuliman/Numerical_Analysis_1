@@ -1,9 +1,9 @@
 import numpy as np
 from decimal import Decimal
 
-# secant method
+# false position method
 # @param f is the function to find fixed point meaning f(x)=x
-# @param po is the firat guess
+# @param p0 is the firat guess
 # @param Nmax is the maximum iterations for finding the root
 # @param TOL is the tolerance to find the root
 def false_position(f, p0, p1, Nmax, TOL):
@@ -26,10 +26,6 @@ def false_position(f, p0, p1, Nmax, TOL):
         q1 = f(p)
     print(f'Methound failed after {Nmax} iterations, found: {Decimal(p0)}')
 
-
-def func1(x):
-    return np.cos(x) - x
-
-
+f1 = lambda x: np.cos(x) - x
 # find root of f(x) = cos(x) - x
-false_position(func1, p0=0.5, p1=np.pi/4, Nmax=17, TOL=pow(10, -5))
+false_position(f1, p0=0.5, p1=np.pi/4, Nmax=17, TOL=pow(10, -5))

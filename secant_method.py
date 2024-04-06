@@ -6,7 +6,7 @@ from decimal import Decimal
 #   f(x) E C[a,b]
 #   an initial interval such that f(a)*f(b)<0 , meaning opposite signs
 # @param f is the function to find fixed point meaning f(x)=x
-# @param po is the firat guess
+# @param p0 is the firat guess
 # @param Nmax is the maximum iterations for finding the root
 # @param TOL is the tolerance to find the root
 def secant_method(f, p0, p1, Nmax, TOL):
@@ -33,9 +33,6 @@ def secant_method(f, p0, p1, Nmax, TOL):
     print(f'Methound failed after {Nmax} iterations, found: {Decimal(p0)}')
 
 
-def func1(x):
-    return np.cos(x) - x
-
-
+f1 = lambda x: np.cos(x) - x
 # find root of f(x) = cos(x) - x
-secant_method(func1, p0=0.5, p1=np.pi/4, Nmax=17, TOL=pow(10, -3))
+secant_method(f1, p0=0.5, p1=np.pi/4, Nmax=17, TOL=pow(10, -3))

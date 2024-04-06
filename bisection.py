@@ -1,7 +1,7 @@
 import numpy as np
 from decimal import Decimal
 
-# bisection
+# bisection method
 # prerequisites:
 #   f(x) E C[a,b]
 #   an initial interval such that f(a)*f(b)<0 , meaning opposite signs
@@ -20,14 +20,12 @@ def bisect(f, a, b, Nmax, TOL):
             print(f'Methound succeded after {n} iterations, found: {Decimal(c)}')
             return
         else: n += 1
-        if f(c)*f(a) < 0: b = c
-        else: a = c
+        if np.sign(f(a)) == np.sign(f(c)): a = c
+        else: b = c
     print(f'Methound failed after {Nmax} iterations, found: {Decimal(c)}')
 
 
-def func1(x):
-    return np.exp(x) - 1
-
+f1 = lambda x: np.exp(x) - 1
 # find x when e^x - 1 = 0
-bisect(func1, a=-2.5, b=1, Nmax=25, TOL=pow(10, -5))
+bisect(f1, a=-2.5, b=1, Nmax=25, TOL=pow(10, -5))
 print(f'the actual root is x=0')
