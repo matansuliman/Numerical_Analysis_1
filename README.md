@@ -1,1 +1,2 @@
-This branch contains methods to find solutions to equations in one variable.
+# Numerical Analysis 1
+## Chapter 2 - Solutions to One-Variable Equations
