@@ -1,1 +1,2 @@
-This branch contains methods to find the Polynomial Interpolations and Polynomial Approximations.
+# Numerical Analysis 1
+## Chapter 3 - Interpolations and Polynomial Approximations
